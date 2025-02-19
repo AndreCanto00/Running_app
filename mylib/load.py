@@ -5,10 +5,12 @@ HRRS = TRIMP/TRIMP_LT*100"""
 
 import math
 
+
 def validate_input(value):
     if value < 0:
         raise ValueError("Input values must be non-negative")
     return value
+
 
 # Function trimp
 def trimp(avg_hr, max_hr, rest_hr, workout_duration):
