@@ -6,10 +6,10 @@ test:
 	python -m pytest -vv --cov=main --cov=calCLI --cov=mylib test_*.py
 
 format:	
-	black mylib/*.py
+	black *.py mylib/*.py
 
 lint:
-	pylint --disable=R,C --ignore-patterns=test_.*?py  mylib/*.py
+	pylint --disable=R,C --ignore-patterns=test_.*?py *.py  mylib/*.py
 
 container-lint:
 	docker run --rm -i hadolint/hadolint < Dockerfile
