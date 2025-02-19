@@ -6,3 +6,4 @@ fastapi
 uvicorn
 black
 ipdb
+httpx

@@ -24,6 +24,7 @@ async def root():
 
 # Creaimo una funzione per calcolare il TRIMP partendo dai dati inseriti dall'utente in FastAPI
 
+
 @app.post("/trimp/")
 async def trimp_post(run: Run):
     """Calculate TRIMP value"""
@@ -34,7 +35,7 @@ async def trimp_post(run: Run):
         workout_duration = run.workout_duration
 
         trimp_value = trimp(avg_hr, max_hr, rest_hr, workout_duration)
-        return {"TRIMP value": trimp_value}
+        return {"TRIMP value": round(trimp_value, 2)}
     except ValueError as e:
         return {"Error": str(e)}
 
@@ -49,7 +50,7 @@ async def trimp_lt_post(run: Run):
         rest_hr = run.rest_hr
 
         trimp_lt_value = trimp_lt(lt_hr, max_hr, rest_hr)
-        return {"TRIMP_LT value": trimp_lt_value}
+        return {"TRIMP_LT value": round(trimp_lt_value, 2)}
     except ValueError as e:
         return {"Error": str(e)}
 
@@ -66,7 +67,7 @@ async def hrrs_post(run: Run):
         lt_hr = run.lt_hr
 
         hrrs_value = hrrs(avg_hr, max_hr, rest_hr, workout_duration, lt_hr)
-        return {"HRRS value": hrrs_value}
+        return {"HRRS value": round(hrrs_value, 2)}
     except ValueError as e:
         return {"Error": str(e)}
 

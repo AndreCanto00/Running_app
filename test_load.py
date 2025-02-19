@@ -3,6 +3,8 @@ import pytest
 from click.testing import CliRunner
 from loadCLI import cli
 from mylib.load import trimp, trimp_lt, hrrs
+from fastapi.testclient import TestClient
+from main import app
 
 
 # Fixtures
@@ -160,3 +162,66 @@ def test_edge_cases():
 
 if __name__ == "__main__":
     pytest.main(["-v", "test_load.py"])
+
+
+### Web Application Testing
+
+
+@pytest.fixture
+def client():
+    with TestClient(app) as client:
+        yield client
+
+
+def test_read_main(client):
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"message": "Hello, I am your load running calculator!"}
+
+
+# Test TRIMP calculation
+def test_trimp_post(client):
+    response = client.post(
+        "/trimp/",
+        json={
+            "avg_hr": 150,
+            "max_hr": 180,
+            "rest_hr": 60,
+            "workout_duration": 60,
+            "lt_hr": 150,
+        },
+    )
+    assert response.status_code == 200
+    assert response.json() == {"TRIMP value": 121.56}
+
+
+# Test TRIMP_LT calculation
+def test_trimp_lt_post(client):
+    response = client.post(
+        "/trimp_lt/",
+        json={
+            "lt_hr": 150,
+            "max_hr": 180,
+            "rest_hr": 60,
+            "workout_duration": 60,
+            "avg_hr": 150,
+        },
+    )
+    assert response.status_code == 200
+    assert response.json() == {"TRIMP_LT value": 121.56}
+
+
+# Test HRRS calculation
+def test_hrrs_post(client):
+    response = client.post(
+        "/hrrs/",
+        json={
+            "avg_hr": 150,
+            "max_hr": 180,
+            "rest_hr": 60,
+            "workout_duration": 60,
+            "lt_hr": 150,
+        },
+    )
+    assert response.status_code == 200
+    assert response.json() == {"HRRS value": 100.0}
