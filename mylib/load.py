@@ -5,9 +5,17 @@ HRRS = TRIMP/TRIMP_LT*100"""
 
 import math
 
+def validate_input(value):
+    if value < 0:
+        raise ValueError("Input values must be non-negative")
+    return value
 
 # Function trimp
 def trimp(avg_hr, max_hr, rest_hr, workout_duration):
+    avg_hr = validate_input(avg_hr)
+    max_hr = validate_input(max_hr)
+    rest_hr = validate_input(rest_hr)
+    workout_duration = validate_input(workout_duration)
     trimp_value = (
         ((avg_hr - rest_hr) / (max_hr - rest_hr))
         * 0.64
@@ -19,6 +27,10 @@ def trimp(avg_hr, max_hr, rest_hr, workout_duration):
 
 # Function trimp_lt, workout_duration = 60
 def trimp_lt(lt_hr, max_hr, rest_hr, lt_duration=60):
+    lt_hr = validate_input(lt_hr)
+    max_hr = validate_input(max_hr)
+    rest_hr = validate_input(rest_hr)
+    lt_duration = validate_input(lt_duration)
     trimp_lt_value = (
         ((lt_hr - rest_hr) / (max_hr - rest_hr))
         * 0.64
@@ -30,6 +42,11 @@ def trimp_lt(lt_hr, max_hr, rest_hr, lt_duration=60):
 
 # Function hrrs
 def hrrs(avg_hr, max_hr, rest_hr, workout_duration, lt_hr):
+    avg_hr = validate_input(avg_hr)
+    max_hr = validate_input(max_hr)
+    rest_hr = validate_input(rest_hr)
+    workout_duration = validate_input(workout_duration)
+    lt_hr = validate_input(lt_hr)
     hrrs_value = (
         trimp(avg_hr, max_hr, rest_hr, workout_duration)
         / trimp_lt(lt_hr, max_hr, rest_hr)
