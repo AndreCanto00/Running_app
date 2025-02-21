@@ -1,13 +1,13 @@
 version: 1.0
-
-runtime: python3
-
+runtime: python3.9
 build:
   commands:
-    - pip install --no-cache-dir -r requirements.txt
-
+    - pip install -r requirements.txt
+runtime_environment_variables:
+    - name: PORT
+      value: "8080"
 run:
-  command: uvicorn main:app --host 0.0.0.0 --port 8080
+  command: python -m uvicorn main:app --host 0.0.0.0 --port 8080
   network:
     port: 8080
 
