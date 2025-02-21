@@ -2,10 +2,8 @@ version: 1.0
 runtime: python3
 build:
   commands:
-    - pip install -r requirements.txt
-runtime_environment_variables:
-    - name: PORT
-      value: "8080"
+    build:
+      - pip install -r requirements.txt
 run:
   command: python -m uvicorn main:app --host 0.0.0.0 --port 8080
   network:
