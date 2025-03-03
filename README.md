@@ -85,7 +85,7 @@ The `apprunner.yaml` file includes the following sections:
 
 ### Example of `apprunner.yaml`.
 
-``yaml
+```yaml
 version: 1.0
 runtime: python3
 build:
