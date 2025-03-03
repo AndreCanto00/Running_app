@@ -10,7 +10,7 @@ Running_app is an application to calculate training load using various metrics s
 
 To install the necessary dependencies, run the following command:
 
-``sh
+```sh
 make install
 ```
 
@@ -20,7 +20,7 @@ make install
 
 To use the CLI, execute one of the following commands:
 
-``sh
+```sh
 python loadCLI.py trimp
 python loadCLI.py trimp_lt
 python loadCLI.py hrrs
@@ -49,7 +49,7 @@ The API will be available at `http://localhost:8080`.
 
 To run tests, use the following command:
 
-``sh
+```sh
 make test
 ```
 
