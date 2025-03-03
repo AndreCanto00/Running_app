@@ -2,88 +2,90 @@
 
 [![Makefile CI](https://github.com/AndreCanto00/Running_app/actions/workflows/makefile.yml/badge.svg)](https://github.com/AndreCanto00/Running_app/actions/workflows/makefile.yml)
 
-## Descrizione
+## Description.
 
-Running_app è un'applicazione per calcolare il carico di allenamento utilizzando diverse metriche come TRIMP, TRIMP_LT e HRRS. L'applicazione offre sia un'interfaccia a riga di comando (CLI) che un'API web basata su FastAPI.
+Running_app is an application to calculate training load using various metrics such as TRIMP, TRIMP_LT, and HRRS. The application offers both a command-line interface (CLI) and a FastAPI-based web API.
 
-## Installazione
+## Installation.
 
-Per installare le dipendenze necessarie, eseguire il seguente comando:
+To install the necessary dependencies, run the following command:
 
-```sh
+``sh
 make install
 ```
 
-## Uso
+## Usage
 
 ### CLI
 
-Per utilizzare la CLI, eseguire uno dei seguenti comandi:
+To use the CLI, execute one of the following commands:
 
-```sh
+``sh
 python loadCLI.py trimp
 python loadCLI.py trimp_lt
 python loadCLI.py hrrs
 ```
 
-### API Web
+### Web API.
 
-Per avviare il server FastAPI, eseguire:
+To start the FastAPI server, run:
 
 ```sh
 uvicorn main:app --host 0.0.0.0 --port 8080
 ```
 
-L'API sarà disponibile all'indirizzo `http://localhost:8080`.
+The API will be available at `http://localhost:8080`.
+
+
 
 #### Endpoint
 
-- `GET /`: Restituisce un messaggio di benvenuto.
-- `POST /trimp/`: Calcola il valore TRIMP.
-- `POST /trimp_lt/`: Calcola il valore TRIMP_LT.
-- `POST /hrrs/`: Calcola il valore HRRS.
+- `GET /`: Returns a welcome message.
+- `POST /trimp/`: Calculates the TRIMP value.
+- `POST /trimp_lt/`: Calculates the TRIMP_LT value.
+- `POST /hrrs/`: Calculates the HRRS value.
 
-## Test
+## Tests.
 
-Per eseguire i test, utilizzare il seguente comando:
+To run tests, use the following command:
 
-```sh
+``sh
 make test
 ```
 
-## Formattazione e Linting
+## Formatting and Linting
 
-Per formattare il codice e controllare lo stile, eseguire:
+To format the code and check the style, execute:
 
 ```sh
 make format
 make lint
 ```
 
-## Contributi
+## Contributions
 
-I contributi sono benvenuti! Sentiti libero di aprire issue e pull request.
+Contributions are welcome! Feel free to open issue and pull request.
 
-## Licenza
+## License
 
-Questo progetto è distribuito sotto la licenza MIT. Vedi il file `LICENSE` per maggiori dettagli.
+This project is distributed under the MIT license. See the `LICENSE` file for more details.
 
-## AWS App Runner
+## AWS App Runner.
 
-Per il deployment su AWS App Runner, utilizziamo il file `apprunner.yaml`. Questo file contiene le configurazioni necessarie per eseguire l'applicazione su AWS App Runner.
+For deployment to AWS App Runner, we use the `apprunner.yaml` file. This file contains the configurations needed to run the application on AWS App Runner.
 
-### Configurazione
+### Configuration.
 
-Il file `apprunner.yaml` include le seguenti sezioni:
+The `apprunner.yaml` file includes the following sections:
 
-- `version`: La versione del file di configurazione.
-- `runtime`: Il runtime utilizzato dall'applicazione (in questo caso, Python 3).
-- `build`: I comandi necessari per costruire l'applicazione.
-- `run`: Il comando per eseguire l'applicazione e la configurazione della rete.
+- `version`: The version of the configuration file.
+- `runtime`: The runtime used by the application (in this case, Python 3).
+- `build`: The commands needed to build the application.
+- `run`: The command to run the application and network configuration.
 
-### Esempio di `apprunner.yaml`
+### Example of `apprunner.yaml`.
 
-```yaml
+``yaml
 version: 1.0
 runtime: python3
 build:
@@ -96,14 +98,15 @@ run:
     port: 8080
 ```
 
-### Deployment
 
-Per effettuare il deployment su AWS App Runner, seguire questi passaggi:
+### Deployment.
 
-1. Accedere alla console AWS e navigare su App Runner.
-2. Creare un nuovo servizio App Runner.
-3. Selezionare il repository del codice sorgente (ad esempio, GitHub) e configurare il collegamento.
-4. Caricare il file `apprunner.yaml` come configurazione del servizio.
-5. Avviare il servizio e attendere che il deployment sia completato.
+To deploy to AWS App Runner, follow these steps:
 
-Una volta completato, l'applicazione sarà disponibile all'indirizzo fornito da AWS App Runner.
+1. Log in to the AWS console and navigate to App Runner.
+2. Create a new App Runner service.
+3. Select the source code repository (e.g., GitHub) and configure the link.
+4. Upload the `apprunner.yaml` file as the service configuration.
+5. Start the service and wait for the deployment to complete.
+
+Once complete, the application will be available at the address provided by AWS App Runner.
