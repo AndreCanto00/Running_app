@@ -7,7 +7,7 @@ from fastapi.testclient import TestClient
 from main import app
 
 
-# Fixtures
+# Fixtures 1
 @pytest.fixture
 def runner():
     """Fixture for Click CLI test runner"""
